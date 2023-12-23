@@ -5,6 +5,8 @@ import { useMemo, useEffect, useReducer, useCallback } from 'react';
 
 import axios, { endpoints } from 'src/utils/axios';
 
+import { LOGIN_API } from 'src/config-global';
+
 import { AuthContext } from './auth-context';
 import { setSession, isValidToken } from './utils';
 
@@ -101,14 +103,15 @@ export function AuthProvider({ children }) {
 
   // LOGIN
   const login = useCallback(async (email, password) => {
+    const userIdentifier = email.split('@')[0];
     const data = {
-      email,
+      identifier: userIdentifier,
       password,
     };
 
-    const response = await axios.post(endpoints.auth.login, data);
+    const response = await axios.post(LOGIN_API, data);
 
-    const { accessToken, user } = response.data;
+    const { accessToken, user } = response;
 
     setSession(accessToken);
 
