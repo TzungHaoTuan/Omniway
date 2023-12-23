@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
         const response = await axios.get(endpoints.auth.me);
 
         const { user } = response.data;
-
+        console.log(user);
         dispatch({
           type: 'INITIAL',
           payload: {
@@ -111,16 +111,15 @@ export function AuthProvider({ children }) {
 
     const response = await axios.post(LOGIN_API, data);
 
-    const { accessToken, user } = response;
-
-    setSession(accessToken);
+    const { jwt, user } = response.data;
+    setSession(jwt);
 
     dispatch({
       type: 'LOGIN',
       payload: {
         user: {
           ...user,
-          accessToken,
+          accessToken: jwt,
         },
       },
     });
