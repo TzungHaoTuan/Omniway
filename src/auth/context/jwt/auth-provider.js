@@ -109,7 +109,7 @@ export function AuthProvider({ children }) {
       password,
     };
 
-    const response = await axios.post(LOGIN_API, data);
+    const response = await axios.post(LOGIN_API, data, { withCredentials: true });
 
     const { jwt, user } = response.data;
     setSession(jwt);

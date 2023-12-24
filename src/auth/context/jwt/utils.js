@@ -36,6 +36,9 @@ export const isValidToken = (accessToken) => {
 
 export const tokenExpired = (exp) => {
   // eslint-disable-next-line prefer-const
+  const cookies = document.cookie;
+  console.log(cookies);
+
   let expiredTimer;
 
   const currentTime = Date.now();

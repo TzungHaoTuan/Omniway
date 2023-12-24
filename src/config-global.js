@@ -5,6 +5,7 @@ import { paths } from 'src/routes/paths';
 
 export const LOGIN_API = process.env.NEXT_PUBLIC_LOGIN_API;
 export const FIGURES_API = process.env.NEXT_PUBLIC_FIGURES_API;
+export const REFRESH_API = process.env.NEXT_PUBLIC_REFRESH_API;
 
 export const HOST_API = process.env.NEXT_PUBLIC_HOST_API;
 export const ASSETS_API = process.env.NEXT_PUBLIC_ASSETS_API;
